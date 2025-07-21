@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Search, ShoppingCart, Menu, Phone } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,9 +39,9 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
-              <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">Home</a>
-              <a href="#granite" className="text-foreground hover:text-primary transition-colors font-medium">Granite Slabs</a>
-              <a href="#machinery" className="text-foreground hover:text-primary transition-colors font-medium">Machinery</a>
+              <Link to="/" className="text-foreground hover:text-primary transition-colors font-medium">Home</Link>
+              <Link to="/granite" className="text-foreground hover:text-primary transition-colors font-medium">Granite Slabs</Link>
+              <Link to="/machines" className="text-foreground hover:text-primary transition-colors font-medium">Machinery</Link>
               <a href="#generators" className="text-foreground hover:text-primary transition-colors font-medium">Generators</a>
               <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium">About</a>
             </div>
@@ -94,8 +95,8 @@ const Header = () => {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <a href="#granite" className="text-foreground hover:text-primary transition-colors font-medium py-2">Granite Slabs</a>
-                <a href="#machinery" className="text-foreground hover:text-primary transition-colors font-medium py-2">Machinery</a>
+                <Link to="/granite" className="text-foreground hover:text-primary transition-colors font-medium py-2">Granite Slabs</Link>
+                <Link to="/machines" className="text-foreground hover:text-primary transition-colors font-medium py-2">Machinery</Link>
                 <a href="#generators" className="text-foreground hover:text-primary transition-colors font-medium py-2">Generators</a>
                 <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium py-2">About</a>
               </div>
