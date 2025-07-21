@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					hover: 'hsl(var(--primary-hover))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -42,7 +43,8 @@ export default {
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					foreground: 'hsl(var(--accent-foreground))',
+					hover: 'hsl(var(--accent-hover))'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -51,6 +53,20 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				/* Industrial Design System Colors */
+				granite: {
+					dark: 'hsl(var(--granite-dark))',
+					medium: 'hsl(var(--granite-medium))',
+					light: 'hsl(var(--granite-light))'
+				},
+				copper: {
+					DEFAULT: 'hsl(var(--copper))',
+					light: 'hsl(var(--copper-light))'
+				},
+				steel: {
+					DEFAULT: 'hsl(var(--steel))',
+					light: 'hsl(var(--steel-light))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -62,6 +78,25 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-copper': 'var(--gradient-copper)',
+				'gradient-granite': 'var(--gradient-granite)',
+				'gradient-steel': 'var(--gradient-steel)'
+			},
+			boxShadow: {
+				'card': 'var(--shadow-card)',
+				'industrial': 'var(--shadow-industrial)',
+				'copper-glow': 'var(--shadow-copper-glow)'
+			},
+			fontFamily: {
+				'heading': 'var(--font-heading)',
+				'body': 'var(--font-body)'
+			},
+			transitionTimingFunction: {
+				'smooth': 'var(--transition-smooth)',
+				'bounce': 'var(--transition-bounce)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
