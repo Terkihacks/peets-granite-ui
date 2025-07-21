@@ -1,10 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Star, ShoppingCart } from "lucide-react";
+import { useState, memo } from "react";
+import ProductDetailModal from "./ProductDetailModal";
 import graniteBlack from "@/assets/granite-black.jpg";
 import generatorYellow from "@/assets/generator-yellow.jpg";
 
-const ProductShowcase = () => {
+const ProductShowcase = memo(() => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleViewDetails = (product: any) => {
+    setSelectedProduct(product);
+    setModalOpen(true);
+  };
   const graniteProducts = [
     {
       id: 1,
@@ -66,7 +75,7 @@ const ProductShowcase = () => {
     }
   ];
 
-  const ProductCard = ({ product, isGranite = false }: { product: any, isGranite?: boolean }) => (
+  const ProductCard = memo(({ product, isGranite = false }: { product: any, isGranite?: boolean }) => (
     <Card className="group overflow-hidden border-border shadow-card hover:shadow-industrial transition-all duration-300 transform hover:-translate-y-2">
       <div className="relative overflow-hidden">
         <img 
@@ -120,13 +129,14 @@ const ProductShowcase = () => {
             variant={isGranite ? "granite" : "steel"} 
             size="sm"
             disabled={!product.inStock}
+            onClick={() => handleViewDetails(product)}
           >
             {product.inStock ? "View Details" : "Notify Me"}
           </Button>
         </div>
       </div>
     </Card>
-  );
+  ));
 
   return (
     <section className="py-16 bg-gradient-granite">
@@ -203,8 +213,15 @@ const ProductShowcase = () => {
           </div>
         </div>
       </div>
+
+      <ProductDetailModal
+        product={selectedProduct}
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        isGranite={selectedProduct && graniteProducts.includes(selectedProduct)}
+      />
     </section>
   );
-};
+});
 
 export default ProductShowcase;

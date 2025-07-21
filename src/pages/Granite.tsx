@@ -1,12 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useState, memo } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ProductDetailModal from "@/components/ProductDetailModal";
 import graniteHero from "@/assets/granite-hero.jpg";
 import graniteBlack from "@/assets/granite-black.jpg";
 
-const Granite = () => {
+const Granite = memo(() => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleViewDetails = (product: any) => {
+    setSelectedProduct(product);
+    setModalOpen(true);
+  };
   const graniteProducts = [
     {
       id: 1,
@@ -113,8 +122,12 @@ const Granite = () => {
                     <Button variant="industrial" className="flex-1">
                       Add to Cart
                     </Button>
-                    <Button variant="outline" className="flex-1">
-                      Request Quote
+                    <Button 
+                      variant="outline" 
+                      className="flex-1"
+                      onClick={() => handleViewDetails(product)}
+                    >
+                      View Details
                     </Button>
                   </div>
                 </CardContent>
@@ -124,9 +137,16 @@ const Granite = () => {
         </div>
       </section>
 
+      <ProductDetailModal
+        product={selectedProduct}
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        isGranite={true}
+      />
+
       <Footer />
     </div>
   );
-};
+});
 
 export default Granite;
