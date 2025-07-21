@@ -14,7 +14,7 @@ const Header = () => {
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-copper" />
-              <span>+1 (555) 123-4567</span>
+              <span>+254 123-4567</span>
             </div>
             <span>Professional Industrial Solutions</span>
           </div>
@@ -32,8 +32,8 @@ const Header = () => {
                 <span className="text-white font-bold text-lg">GF</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">Granite Forge</h1>
-                <p className="text-xs text-muted-foreground">Emporium</p>
+                <h1 className="text-xl font-bold text-foreground">Peets Granite</h1>
+                <p className="text-xs text-muted-foreground">Ltd</p>
               </div>
             </div>
 
@@ -42,7 +42,7 @@ const Header = () => {
               <Link to="/" className="text-foreground hover:text-primary transition-colors font-medium">Home</Link>
               <Link to="/granite" className="text-foreground hover:text-primary transition-colors font-medium">Granite Slabs</Link>
               <Link to="/machines" className="text-foreground hover:text-primary transition-colors font-medium">Machinery</Link>
-              <a href="#generators" className="text-foreground hover:text-primary transition-colors font-medium">Generators</a>
+              {/* <a href="#generators" className="text-foreground hover:text-primary transition-colors font-medium">Generators</a> */}
               <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium">About</a>
             </div>
           </div>

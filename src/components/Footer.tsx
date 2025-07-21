@@ -14,7 +14,7 @@ const Footer = () => {
                 <span className="text-white font-bold text-lg">GF</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold">Granite Forge</h3>
+                <h3 className="text-xl font-bold">Peets Granite </h3>
                 <p className="text-sm text-primary-foreground/80">Emporium</p>
               </div>
             </div>
