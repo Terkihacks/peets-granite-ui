@@ -29,11 +29,11 @@ const Header = () => {
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-hero rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">GF</span>
+                <span className="text-white font-bold text-lg">PG</span>
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Peets Granite</h1>
-                <p className="text-xs text-muted-foreground">Ltd</p>
+                {/* <p className="text-xs text-muted-foreground">Ltd</p> */}
               </div>
             </div>
 

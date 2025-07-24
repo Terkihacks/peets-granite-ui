@@ -46,6 +46,36 @@ const Granite = memo(() => {
       finish: "Polished",
       price: "$520",
       description: "Rare blue granite with unique veining patterns"
+    },
+    {
+      id: 4,
+      name: "Royal Blue Granite",
+      image: graniteBlack,
+      size: "100cm x 50cm",
+      thickness: "25mm", 
+      finish: "Polished",
+      price: "$520",
+      description: "Rare blue granite with unique veining patterns"
+    },
+    {
+      id: 5,
+      name: "Royal Blue Granite",
+      image: graniteBlack,
+      size: "100cm x 50cm",
+      thickness: "25mm", 
+      finish: "Polished",
+      price: "$520",
+      description: "Rare blue granite with unique veining patterns"
+    },
+    {
+      id: 6,
+      name: "Royal Blue Granite",
+      image: graniteBlack,
+      size: "100cm x 50cm",
+      thickness: "25mm", 
+      finish: "Polished",
+      price: "$520",
+      description: "Rare blue granite with unique veining patterns"
     }
   ];
 

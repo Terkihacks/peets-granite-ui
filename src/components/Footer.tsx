@@ -11,11 +11,11 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-copper rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">GF</span>
+                <span className="text-white font-bold text-lg">TG</span>
               </div>
               <div>
                 <h3 className="text-xl font-bold">Peets Granite </h3>
-                <p className="text-sm text-primary-foreground/80">Emporium</p>
+                {/* <p className="text-sm text-primary-foreground/80">Emporium</p> */}
               </div>
             </div>
             <p className="text-primary-foreground/80 mb-4 leading-relaxed">
@@ -68,11 +68,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-copper" />
-                <span className="text-primary-foreground/80">+1 (555) 123-4567</span>
+                <span className="text-primary-foreground/80">+254115696564</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-copper" />
-                <span className="text-primary-foreground/80">info@graniteforge.com</span>
+                <span className="text-primary-foreground/80">info@peetsgranite.com</span>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 text-copper mt-1" />
@@ -103,7 +103,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-primary-foreground/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-primary-foreground/60 text-sm">
-            © 2024 Granite Forge Emporium. All rights reserved.
+            © 2024 Peets Granite . All rights reserved.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="text-primary-foreground/60 hover:text-copper transition-colors text-sm">Privacy Policy</a>
