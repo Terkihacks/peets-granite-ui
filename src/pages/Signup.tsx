@@ -16,6 +16,8 @@ const Signup = () => {
     firstName: "",
     lastName: "",
     email: "",
+    address:"",
+    phone:"",
     password: "",
     confirmPassword: "",
     agreeToTerms: false
@@ -62,6 +64,7 @@ const Signup = () => {
                       />
                     </div>
                   </div>
+
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
                     <Input
@@ -70,6 +73,39 @@ const Signup = () => {
                       placeholder="Last name"
                       value={formData.lastName}
                       onChange={(e) => handleInputChange("lastName", e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+
+
+                <div className="space-y-2">
+                  <Label htmlFor="email">Phone number</Label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="Enter your phone number"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      className="pl-10"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email">Address</Label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="Enter your addrress"
+                      value={formData.address}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      className="pl-10"
                       required
                     />
                   </div>
