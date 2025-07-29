@@ -12,7 +12,18 @@ const Machines = memo(() => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleViewDetails = (product: any) => {
+  type Machine = {
+    id: number;
+    name: string;
+    image: string;
+    power: string;
+    fuelType: string;
+    brand: string;
+    price: string;
+    description: string;
+  };
+
+  const handleViewDetails = (product: Machine) => {
     setSelectedProduct(product);
     setModalOpen(true);
   };
