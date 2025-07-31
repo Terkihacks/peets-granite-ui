@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
-import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, MapPin, Phone } from "lucide-react";
 import Header from "@/components/Header";
 
 const Signup = () => {
@@ -82,7 +82,7 @@ const Signup = () => {
                 <div className="space-y-2">
                   <Label htmlFor="email">Phone number</Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                    <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
                       id="email"
                       type="email"
@@ -98,7 +98,7 @@ const Signup = () => {
                 <div className="space-y-2">
                   <Label htmlFor="email">Address</Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                    <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
                       id="email"
                       type="email"
