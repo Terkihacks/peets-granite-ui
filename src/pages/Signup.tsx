@@ -8,8 +8,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User, MapPin, Phone } from "lucide-react";
 import Header from "@/components/Header";
-
+import {RootState,AppDispatch } from '../store/storeconfig'
+import { useSelector,useDispatch } from 'react-redux'
+import {register} from '../store/authSlice'
 const Signup = () => {
+  const dispatch = useDispatch<AppDispatch>()
+   const { isLoading, error, isAuthenticated } = useSelector((state: RootState) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -25,7 +29,7 @@ const Signup = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle signup logic here
+    dispatch(register(formData));
     console.log("Signup attempt:", formData);
   };
 
@@ -47,6 +51,7 @@ const Signup = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
+             {isAuthenticated && <p>🎉 Registered successfully!</p>}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -84,11 +89,11 @@ const Signup = () => {
                   <div className="relative">
                     <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
-                      id="email"
-                      type="email"
+                      id="phone"
+                      type="phone"
                       placeholder="Enter your phone number"
                       value={formData.phone}
-                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      onChange={(e) => handleInputChange("phone", e.target.value)}
                       className="pl-10"
                       required
                     />
@@ -100,11 +105,11 @@ const Signup = () => {
                   <div className="relative">
                     <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
-                      id="email"
-                      type="email"
+                      id="address"
+                      type="address"
                       placeholder="Enter your addrress"
                       value={formData.address}
-                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      onChange={(e) => handleInputChange("address", e.target.value)}
                       className="pl-10"
                       required
                     />
