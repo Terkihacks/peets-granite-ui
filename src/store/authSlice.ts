@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { authService } from '../services/AuthServices/RegistrationService';
+import { authService } from '../services/AuthServices/AuthService';
+
 
 export interface AuthState {
     user: null | { id: string; email: string};
@@ -10,7 +11,7 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-  user:JSON.parse(localStorage.getItem('user')) || null,
+  user: null,
   accessToken: localStorage.getItem('token') || null,
   isAuthenticated: false,
   isLoading: false,
@@ -23,8 +24,8 @@ export const register = createAsyncThunk(
   async ({firstName, lastName, email, address, phone, password}:{ firstName: string; lastName: string; email: string; address: string; phone: string; password: string }, thunkAPI) => {
     try {
       const response = await authService.register(firstName, lastName, email, address, phone, password);
-      localStorage.setItem('user', JSON.stringify(response.user));
-      localStorage.setItem('token', response.accessToken);
+      // localStorage.setItem('user', JSON.stringify(response.user));
+      // localStorage.setItem('token', response.accessToken);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response?.data?.message || 'Registration failed');
@@ -32,16 +33,20 @@ export const register = createAsyncThunk(
 
   }
 )
-// export const login = createAsyncThunk(
-//     'auth/login',
-//     async({email,password}: { email: string; password: string },thunkAPI) => {
-//         try{
-
-//         } catch (error:any) {
-
-//     }
-
-// )
+export const login = createAsyncThunk(
+    'auth/login',
+    async({email,password}: { email: string; password: string },thunkAPI) => {
+        try{
+            const response = await authService.login(email,password);
+            localStorage.setItem('user', JSON.stringify(response.customer));
+            localStorage.setItem('token', response.token);
+            console.log('Login successful:', response);
+            return response;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response?.data?.message || 'Login failed');
+        }
+    }
+)
 
 // export const logout = createAsyncThunk(
 //     await 'auth/logout',
@@ -67,6 +72,23 @@ const authSlice = createSlice({
           state.isLoading = false;
           state.error = action.payload as string ?? 'Registration failed';
         });    
+
+        // Login
+      builder
+        .addCase(login.pending, (state) => {
+          state.isLoading = true;
+          state.error = null;
+        })
+        .addCase(login.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.isAuthenticated = true;
+          state.user = action.payload.user;
+          state.accessToken = action.payload.accessToken;
+        })
+        .addCase(login.rejected, (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload as string ?? 'Login failed';
+        });
     }
 })
 export default authSlice.reducer

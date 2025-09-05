@@ -1,4 +1,4 @@
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from 'react-hot-toast';
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -12,6 +12,8 @@ const Granite = lazy(() => import("./pages/Granite"));
 const Machines = lazy(() => import("./pages/Machines"));
 const Login = lazy(() => import("./pages/Login"));
 const Signup = lazy(() => import("./pages/Signup"));
+const Onboarding = lazy(() => import("./pages/Onboarding"));
+
 
 const queryClient = new QueryClient();
 
@@ -24,7 +26,7 @@ const LoadingSpinner = () => (
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
+      <Toaster position="top-right" reverseOrder={false} />
       <Sonner />
       <BrowserRouter>
         <Suspense fallback={<LoadingSpinner />}>
@@ -34,6 +36,7 @@ const App = () => (
             <Route path="/machines" element={<Machines />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/onboarding" element={<Onboarding />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -7,16 +7,28 @@ import { Separator } from "@/components/ui/separator";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import Header from "@/components/Header";
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../store/authSlice';
+import { RootState, AppDispatch } from '../store/storeconfig';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch<AppDispatch>();
+  const { isLoading, error, isAuthenticated } = useSelector((state: RootState) => state.auth);
+
+  const [logindata, setLogindata] = useState({
+    email: "",
+    password: ""
+  })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log("Login attempt:", { email, password });
+    dispatch(login(logindata));
+    console.log("Login attempt:", logindata);
+  };
+
+   const handleInputChange = (field: string, value: string | boolean) => {
+    setLogindata(prev => ({ ...prev, [field]: value }));
   };
 
   return (
@@ -33,6 +45,8 @@ const Login = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
+            {
+              isAuthenticated ? <p className="text-green-500">🎉 Logged in successfully!</p> :
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
@@ -42,8 +56,8 @@ const Login = () => {
                       id="email"
                       type="email"
                       placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={logindata.email}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
                       className="pl-10"
                       required
                     />
@@ -58,8 +72,8 @@ const Login = () => {
                       id="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      value={logindata.password}
+                      onChange={(e) => handleInputChange("password", e.target.value)}
                       className="pl-10 pr-10"
                       required
                     />
@@ -79,10 +93,12 @@ const Login = () => {
                   </Link>
                 </div>
 
-                <Button type="submit" variant="industrial" className="w-full">
+                <Button type="submit" disabled = {isLoading} variant="industrial" className="w-full">
                   Sign In
                 </Button>
               </form>
+            }
+      
 
               <div className="mt-6">
                 <Separator className="my-4" />
