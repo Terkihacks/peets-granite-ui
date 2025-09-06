@@ -10,22 +10,53 @@ import Header from "@/components/Header";
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/authSlice';
 import { RootState, AppDispatch } from '../store/storeconfig';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const { isLoading, error, isAuthenticated } = useSelector((state: RootState) => state.auth);
-
+  const navigate = useNavigate();
   const [logindata, setLogindata] = useState({
     email: "",
     password: ""
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   dispatch(login(logindata));
+  //   console.log("Login attempt:", logindata);
+  // };
+   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(login(logindata));
-    console.log("Login attempt:", logindata);
+    
+     try {
+          await dispatch(login(logindata)).unwrap();
+          toast(
+            <div>
+              <div className="font-bold">Login Successful! 🎉</div>
+              <div>Welcome to Granite Forge Emporium</div>
+            </div>,
+            { duration: 3000 }
+          );
+    
+          // Redirect after short delay
+          setTimeout(() => {
+            navigate('/onboarding');
+          }, 2000);
+          
+        } catch (error) {
+          toast(
+            <div>
+              <div className="font-bold text-destructive">Registration Failed</div>
+              <div>{(error as Error)?.message || "Please try again"}</div>
+            </div>
+          );
+        }
   };
+
+
 
    const handleInputChange = (field: string, value: string | boolean) => {
     setLogindata(prev => ({ ...prev, [field]: value }));

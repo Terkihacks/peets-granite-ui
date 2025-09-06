@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import OnboardHeader from "@/components/OnboardHeader";
 import HeroSection from "@/components/HeroSection";
 import ProductShowcase from "@/components/ProductShowcase";
 import Footer from "@/components/Footer";
@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 const Onboarding = () => {
    return (
    <div className="min-h-screen bg-background">
-      <Header />
+      <OnboardHeader />
       <HeroSection />
       <ProductShowcase />
       <Footer />

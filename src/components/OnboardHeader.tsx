@@ -3,7 +3,7 @@ import { Search, ShoppingCart, Menu, Phone } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const OnboardHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -20,7 +20,7 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-4 text-sm">
             <a href="#" className="hover:text-primary transition-colors">Support</a>
-            {/* <a href="#" className="hover:text-primary transition-colors">Account</a> */}
+            <a href="#" className="hover:text-primary transition-colors">Account</a>
           </div>
         </div>
 
@@ -58,22 +58,17 @@ const Header = () => {
               />
             </div>
             
-            {/* <Button variant="ghost" size="icon" className="relative">
+            <Button variant="ghost" size="icon" className="relative">
               <ShoppingCart className="h-5 w-5" />
               <span className="absolute -top-1 -right-1 bg-copper text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">2</span>
-            </Button> */}
+            </Button>
 
-            <Link to="/login" className="hidden md:flex">
-              <Button variant="outline" size="sm">
-                Sign In
-              </Button>
-            </Link>
-            
+{/*             
             <Link to="/signup" className="hidden md:flex">
               <Button variant="industrial" size="sm">
                 Sign Up
               </Button>
-            </Link>
+            </Link> */}
 
             <Button 
               variant="ghost" 
@@ -104,7 +99,7 @@ const Header = () => {
                 <a href="#generators" className="text-foreground hover:text-primary transition-colors font-medium py-2">Generators</a>
                 <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium py-2">About</a>
               </div>
-              <div className="flex gap-2 mt-2">
+              {/* <div className="flex gap-2 mt-2">
                 <Link to="/login" className="flex-1">
                   <Button variant="outline" className="w-full">
                     Sign In
@@ -115,7 +110,7 @@ const Header = () => {
                     Sign Up
                   </Button>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         )}
@@ -124,4 +119,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default OnboardHeader;

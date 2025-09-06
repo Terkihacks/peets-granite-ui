@@ -33,7 +33,7 @@ const Signup = () => {
 
   // const handleSubmit = (e: React.FormEvent) => {
   //   e.preventDefault();
-  //   dispatch(register(formData));
+  //   dispatch(register(formData));   
   //   console.log("Signup attempt:", formData);
   // };
     const handleSubmit = async (e: React.FormEvent) => {
